@@ -23,10 +23,14 @@
 </template>
 
 <script>
+import { mapStores } from "pinia";
 import { useModalStore } from "@/stores/modal";
 
 export default {
   name: "AppHeader",
+  computed: {
+    ...mapStores(useModalStore),
+  },
   setup() {
     const modalStore = useModalStore();
 
