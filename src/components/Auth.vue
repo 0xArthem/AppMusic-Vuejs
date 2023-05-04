@@ -181,7 +181,12 @@ export default {
     return {
       tab: "login",
       schema: {
-        name: "required",
+        name: {
+          required: true,
+          min: 3,
+          max: 100,
+          alpha_spaces: true,
+        },
         email: "",
         age: "",
         password: "",
