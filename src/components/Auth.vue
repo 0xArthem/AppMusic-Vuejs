@@ -233,13 +233,13 @@ export default {
           max: 100,
           excluded: "password",
         },
-        confirm_password: "confirmed:@password",
+        confirm_password: "passwords_mismatch:@password",
         country: {
           required: true,
-          excluded: "Antarctica",
+          country_excluded: "Antarctica",
         },
         tos: {
-          required: true,
+          tos: true,
         },
       },
       userData: {
