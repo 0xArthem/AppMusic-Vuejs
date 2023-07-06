@@ -16,6 +16,7 @@
     "@heroicons/vue": "^2.0.17",
     "@vee-validate/rules": "^4.8.6",
     "firebase": "^9.22.1",
+    "howler": "^2.2.3",
     "pinia": "^2.0.35",
     "vee-validate": "^4.8.6",
     "vue": "^3.2.47",
