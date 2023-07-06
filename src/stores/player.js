@@ -2,6 +2,10 @@ import { defineStore } from "pinia";
 import { Howl } from "howler";
 
 export default defineStore("player", {
+  state: () => ({
+    sound: null,
+    currentSong: null,
+  }),
   actions: {
     newSong(song) {
       this.currentSong = song;
@@ -9,12 +13,28 @@ export default defineStore("player", {
       this.sound = new Howl({
         src: [song.url],
         html5: true,
-        onloaderror: function () {
-          console.log("Erreur lors du chargement du fichier audio.");
-        },
       });
 
       this.sound.play();
+    },
+    async toggleAudio() {
+      if (!this.sound.playing) {
+        return;
+      }
+
+      if (this.sound.playing()) {
+        this.sound.pause();
+      } else {
+        this.sound.play();
+      }
+    },
+  },
+  getters: {
+    playing: (state) => {
+      if (state.sound.playing) {
+        return state.sound.playing();
+      }
+      return false;
     },
   },
 });

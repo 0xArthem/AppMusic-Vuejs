@@ -1,5 +1,4 @@
 <template>
-  <h1>Authhhhhh</h1>
   <div
     class="fixed z-10 inset-0 overflow-y-auto"
     id="modal"
