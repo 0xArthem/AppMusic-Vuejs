@@ -5,6 +5,8 @@ export default defineStore("player", {
   state: () => ({
     sound: null,
     currentSong: null,
+    seek: "00:00",
+    duration: "00:00",
   }),
   actions: {
     newSong(song) {
@@ -16,6 +18,9 @@ export default defineStore("player", {
       });
 
       this.sound.play();
+      this.sound.on("play", () => {
+        requestAnimationFrame(this.progress);
+      });
     },
     async toggleAudio() {
       if (!this.sound.playing) {
@@ -26,6 +31,14 @@ export default defineStore("player", {
         this.sound.pause();
       } else {
         this.sound.play();
+      }
+    },
+    progress() {
+      this.seek = this.sound.seek();
+      this.duration = this.sound.duration();
+
+      if (this.sound.playing()) {
+        requestAnimationFrame(this.progress);
       }
     },
   },
